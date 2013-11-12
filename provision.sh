@@ -167,6 +167,10 @@ usermod -a -G vagrant www-data
 echo "[provisioning] Setting hostname..."
 sudo hostname $HOSTNAME
 
+# Change document root to vagrant sites
+rm -rf /var/www
+ln -fs /vagrant/sites /var/www
+
 #====================================CLEAN UP==================================
 
 # try to resolve some issue when upgrads/install does not run properly
