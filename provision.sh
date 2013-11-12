@@ -176,7 +176,7 @@ sudo dpkg --configure -a
 sudo apt-get autoremove -y 
 
 
-##### PROVISION CHECK #####
+#==================================PROVISION CHECK==============================
 
 # Create .provision_check for the script to check on during a next vargant up.
 echo "[provisioning] Creating .provision_done file..."
