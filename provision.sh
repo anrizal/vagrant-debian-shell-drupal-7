@@ -166,7 +166,8 @@ usermod -a -G vagrant www-data
 # Hostname
 echo "[provisioning] Setting hostname..."
 sudo hostname $HOSTNAME
-
+sudo cat ServerName $HOSTNAME >> /etc/apache2/httpd.conf
+ 
 # Change document root to vagrant sites
 rm -rf /var/www
 ln -fs /vagrant/sites /var/www
