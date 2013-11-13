@@ -13,7 +13,7 @@
 #=============================START CONFIGURATION===============================
 
 # Server name
-HOSTNAME="vagrant.dcl"
+HOSTNAME="localhost"
 
 # MySQL password, 
 # you should change it (note:storing password in a script is bad)
