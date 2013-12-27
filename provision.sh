@@ -70,6 +70,10 @@ sudo apt-get update
 echo "[provisioning] Installing nfs-common.........."
 sudo apt-get install -y nfs-common
 
+# Install build essential
+echo "[provisioning] Installing build-essential.........."
+sudo apt-get install -y build-essential
+
 # Install development package for development environment
 echo "[provisioning] Installing development environment.........."
 
@@ -122,8 +126,10 @@ echo "[provisioning] Installing curl, make, openssl, nano, unzip..."
 
 sudo apt-get install -y curl 
 sudo apt-get install -y make 
-sudo apt-get install -y openssl 
+sudo apt-get install -y openssl
+sudo apt-get install -y php-pear 
 sudo apt-get install -y php5-dev
+sudo pecl install -y uploadprogress
 sudo a2enmod ssl 
 sudo apt-get install -y unzip 
 sudo apt-get install -y nano # Nano
