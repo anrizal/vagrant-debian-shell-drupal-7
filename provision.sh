@@ -106,6 +106,15 @@ echo "[provisioning] Installing memcache.........."
 sudo apt-get install memcached libmemcached-tools -y #install memcache
 echo "[provisioning] Installing APC.........."
 sudo apt-get install php-apc -y #install apc
+echo "[provisioning] enable APC and set APC apc.shm_size to 96M"
+echo "apc.enabled=1" >> /etc/php5/conf.d/apc.ini
+echo "apc.shm_segments=1" >> /etc/php5/conf.d/apc.ini
+echo "apc.shm_size=96" >> /etc/php5/conf.d/apc.ini
+# Define if APC need to check every PHP Script at execute-time to see if the files have been updated since the last time it was read off the disk
+echo "apc.stat=0" >> /etc/php5/conf.d/apc.ini
+# Time in sec for cache to live before is been clean up. If set to zero files will never expire until Apache is restarted.
+echo "apc.ttl=0" >> /etc/php5/conf.d/apc.ini 
+
 sudo service apache2 restart
 #downloding apc.php
 wget -O /home/vagrant/sites apc.php "http://git.php.net/?p=pecl/caching/apc.git;a=blob_plain;f=apc.php;hb=HEAD"
@@ -129,10 +138,14 @@ sudo apt-get install -y make
 sudo apt-get install -y openssl
 sudo apt-get install -y php-pear 
 sudo apt-get install -y php5-dev
-sudo pecl install -y uploadprogress
 sudo a2enmod ssl 
 sudo apt-get install -y unzip 
 sudo apt-get install -y nano # Nano
+
+# install uploadprogress
+echo "[provisioning] Installing uploadprogress..."
+sudo pecl install -y uploadprogress
+echo "extension=uploadprogress.so" >> /etc/php5/conf.d/uploadprogress.ini
 
 # Install Drush by wget
 echo "[provisioning] Installing drush..."
@@ -160,6 +173,9 @@ echo "extension=xhprof.so" >> /etc/php5/conf.d/xhprof.ini
 echo "xhprof.output_dir=/tmp" >> /etc/php5/conf.d/xhprof.ini
 cd -
 sudo rm -f /home/vagrant/master.zip
+
+# restart apache
+echo "[provisioning] restarting apache..."
 sudo service apache2 restart
 
 
