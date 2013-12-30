@@ -106,10 +106,10 @@ echo "[provisioning] Installing memcache.........."
 sudo apt-get install memcached libmemcached-tools -y #install memcache
 echo "[provisioning] Installing APC.........."
 sudo apt-get install php-apc -y #install apc
-echo "[provisioning] enable APC and set APC apc.shm_size to 96M"
+echo "[provisioning] enable APC and set APC apc.shm_size to 128M"
 echo "apc.enabled=1" >> /etc/php5/conf.d/apc.ini
 echo "apc.shm_segments=1" >> /etc/php5/conf.d/apc.ini
-echo "apc.shm_size=96" >> /etc/php5/conf.d/apc.ini
+echo "apc.shm_size=128M" >> /etc/php5/conf.d/apc.ini
 # Define if APC need to check every PHP Script at execute-time to see if the files have been updated since the last time it was read off the disk
 echo "apc.stat=0" >> /etc/php5/conf.d/apc.ini
 # Time in sec for cache to live before is been clean up. If set to zero files will never expire until Apache is restarted.
@@ -158,7 +158,7 @@ sudo chown -R vagrant:vagrant /opt/drush-$DRUSH_VERSION
 # add drush to /usr/sbin 
 sudo ln -s /opt/drush-$DRUSH_VERSION/drush /usr/sbin
 # remove the downloaded tarbal 
-sudo rm -rf /home/vagrant/sites/$DRUSH_VERSION.tar.gz  
+sudo rm -rf /home/vagrant/$DRUSH_VERSION.tar.gz  
 
 # Install xhprof
 echo "[provisioning] Installing xhprof..."
