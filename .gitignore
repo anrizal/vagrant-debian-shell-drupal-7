@@ -2,4 +2,5 @@
 /www/
 /site/
 /sites/
+!/sites/your-site-in-this-folder.txt
 /.vagrant/
