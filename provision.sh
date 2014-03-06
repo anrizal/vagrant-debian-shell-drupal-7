@@ -144,7 +144,7 @@ sudo apt-get install -y nano # Nano
 
 # install uploadprogress
 echo "[provisioning] Installing uploadprogress..."
-sudo pecl install -y uploadprogress
+sudo pecl install uploadprogress -y
 echo "extension=uploadprogress.so" >> /etc/php5/conf.d/uploadprogress.ini
 
 # Install Drush by wget
