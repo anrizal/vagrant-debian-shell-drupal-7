@@ -5,7 +5,7 @@
 # This vagrant file is intended for
 # Host OS: Windows 7
 # Provider: Virtual Box
-# Vagrant: Vagrant 1.3.3
+# Vagrant: Vagrant 1.5 ++
 # Vagrant API: Version 2
 # Provision: Shell
 # Guest OS: Ubuntu 12.04 LTS 64bit
@@ -58,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network :private_network, ip: IP
 
   # Configure shared/synced folder. we do not use NFS for Windows Host
-    config.vm.synced_folder HOST_FOLDER, GUEST_FOLDER, id: "vagrant-root", nfs: false
+    config.vm.synced_folder HOST_FOLDER, GUEST_FOLDER, id: "vagrant-root", nfs: false, create: true
 
   # Provision
     config.vm.provision :shell, :path=> SHELL_PATH
